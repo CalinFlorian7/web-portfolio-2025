@@ -33,6 +33,16 @@ const studentData = {
         link: "https://github.com/CalinFlorian7/Calculator-app"
       }
     ],
+    social:[ {
+      platform: "LinkedIn",
+      link: "https://www.linkedin.com/in/calin-racaru-123456789/"
+    },
+    {
+      platform: "GitHub",
+      link: "https://github.com/CalinFlorian7"
+    }
+    ],
+
     avatar: "https://ui-avatars.com/api/?name=Calin+Racaru&size=200&background=random"
   };
 
@@ -167,6 +177,17 @@ function createPersonalPage() {
     }
     projectsSection.appendChild(cardsContainer);
     personalInfoSection.appendChild(projectsSection);
+    //footer cu link-uri sociale 
+    const footer = document.createElement('footer');
+    footer.className = 'footer';
+    for (const social of studentData.social)  {
+      const link = document.createElement('a');
+      link.href = social.link;
+      link.textContent = social.platform;
+      link.style.marginRight = '15px';
+      footer.appendChild(link);
+    }
+    personalInfoSection.appendChild(footer);
 
 
 
