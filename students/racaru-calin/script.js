@@ -142,6 +142,34 @@ function createPersonalPage() {
     sectionSkills.appendChild(skillsList);
     personalInfoSection.appendChild(sectionSkills);
 
+    // sectiunea proiecte
+    const projectsSection = document.createElement('section');
+    const cardsContainer = document.createElement('div');
+    cardsContainer.className = 'card-grid';
+
+    for (const projec of studentData.projects) {
+      const card = document.createElement('card');
+      card.className = 'card';
+      const title = document.createElement('h3');
+      title.textContent = projec.title;
+      card.appendChild(title);
+      const description = document.createElement('p');
+      description.textContent = projec.description;
+      card.appendChild(description);
+      const techList = document.createElement('p');
+      techList.textContent = 'Tehnologii: ' + projec.technologies.join(', ');
+      card.appendChild(techList);
+      const link = document.createElement('a');
+      link.href = projec.link;
+      link.textContent = 'Vezi Proiect';
+      card.appendChild(link);
+      cardsContainer.appendChild(card);
+    }
+    projectsSection.appendChild(cardsContainer);
+    personalInfoSection.appendChild(projectsSection);
+
+
+
     app.appendChild(header);
     app.appendChild(personalInfoSection);
   }
