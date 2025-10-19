@@ -94,7 +94,7 @@ function createPersonalPage() {
 
     }
 
-    const cardView = document.createElement('card');
+    const cardView = document.createElement('div');
     cardView.className = 'card';
 
     cardView.appendChild(personalInfoList);
@@ -113,7 +113,7 @@ function createPersonalPage() {
       educationList.appendChild(listItem);
     }
 
-    const educationCard = document.createElement('card');
+    const educationCard = document.createElement('div');
     educationCard.className = 'card';
 
     educationCard.appendChild(educationList);
@@ -158,7 +158,7 @@ function createPersonalPage() {
     cardsContainer.className = 'card-grid';
 
     for (const projec of studentData.projects) {
-      const card = document.createElement('card');
+      const card = document.createElement('div');
       card.className = 'card';
       const title = document.createElement('h3');
       title.textContent = projec.title;
