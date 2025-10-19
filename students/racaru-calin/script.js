@@ -64,9 +64,86 @@ function createPersonalPage() {
     
     header.appendChild(avatar);
     header.appendChild(name);
-    app.appendChild(header);
+  
     
     // ... continuă cu restul secțiunilor
+
+    // Secțiune informații personale
+    const personalInfoSection = document.createElement('div');
+    personalInfoSection.className = 'section';
+    const personalInfoTitle = document.createElement('h2');
+    personalInfoTitle.textContent = 'Informații Personale';
+    personalInfoSection.appendChild(personalInfoTitle);
+    const personalInfoList = document.createElement('ul');
+
+    for (const [key, value] of Object.entries(studentData.personalInfo)) {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
+      listItem.style.fontWeight = 'bold';
+      personalInfoList.appendChild(listItem);
+
+    }
+
+    const cardView = document.createElement('card');
+    cardView.className = 'card';
+
+    cardView.appendChild(personalInfoList);
+    personalInfoSection.appendChild(cardView);
+
+//sectiunea educație
+    const educationTitle = document.createElement('h2');
+    educationTitle.textContent = 'Educație';
+    personalInfoSection.appendChild(educationTitle);
+    const educationList = document.createElement('ul');
+
+    for (const [key, value] of Object.entries(studentData.education)) {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
+      listItem.style.fontWeight = 'bold';
+      educationList.appendChild(listItem);
+    }
+
+    const educationCard = document.createElement('card');
+    educationCard.className = 'card';
+
+    educationCard.appendChild(educationList);
+    personalInfoSection.appendChild(educationCard);
+//sectiunea skills
+
+    const sectionSkills = document.createElement('section');
+    sectionSkills.className = 'section';
+    const skillsTitle = document.createElement('h2');
+    skillsTitle.textContent = 'Skills';
+    sectionSkills.appendChild(skillsTitle);
+    const skillsList = document.createElement('div');
+
+   for (const skill of studentData.skills) {
+  // create skill item
+  const skillItem = document.createElement('div');
+  skillItem.classList.add('skill-item', 'bold-text');
+  skillItem.textContent = `${skill.name} - ${skill.category}`;
+
+  const skillLevel = document.createElement('span');
+  skillLevel.textContent = ` (${skill.level}%)`;
+  skillLevel.style.marginLeft = '8px';
+  skillLevel.style.fontWeight = 'normal';
+  skillLevel.style.float = 'right';
+  skillItem.appendChild(skillLevel);
+  skillsList.appendChild(skillItem);
+  const progressBar = document.createElement('div');
+  progressBar.className = 'progress-bar';
+  const progress = document.createElement('div');
+  progress.className = 'progress';
+  progress.style.width = skill.level + '%';
+  progressBar.appendChild(progress);
+  skillsList.appendChild(progressBar);
+}
+
+    sectionSkills.appendChild(skillsList);
+    personalInfoSection.appendChild(sectionSkills);
+
+    app.appendChild(header);
+    app.appendChild(personalInfoSection);
   }
   
   // 3. Apelează funcția când DOM-ul este gata
